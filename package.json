@@ -8,7 +8,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "lint": "esllint . --ext .ts,.tsx",
-    "lint:fix": "esllint . --ext .ts,.tsx --fix"
+    "lint:fix": "esllint . --ext .ts,.tsx --fix",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@types/jest": "^29.5.14",
@@ -28,6 +29,7 @@
     "eslint-plugin-prettier": "^5.2.6",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-native": "^5.0.0",
+    "prettier": "^3.5.3",
     "typescript": "^5.3.3"
   },
   "private": true
