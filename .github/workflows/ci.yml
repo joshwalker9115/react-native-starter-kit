@@ -33,7 +33,9 @@ jobs:
   preview:
     name: EAS Preview Build
     needs: lint-and-test
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: |
+      (github.event_name == 'push' && github.ref == 'refs/heads/main') ||
+      (github.event_name == 'pull_request' && github.base_ref == 'main')
     runs-on: ubuntu-latest
     permissions:
       contents: read            # needed to checkout code
