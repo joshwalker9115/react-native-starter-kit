@@ -1,0 +1,61 @@
+name: CI
+
+# 1️⃣ Run on pull requests and on pushes to main
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  lint-and-test:
+    name: Lint & Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.x'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run ESLint
+        run: npm run lint          # Assumes "lint" script runs eslint
+
+      - name: Run tests
+        run: npm test -- --coverage
+
+  preview:
+    name: EAS Preview Build
+    needs: lint-and-test
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read            # needed to checkout code
+      id-token: write           # needed if you use EAS Submit
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.x'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Authenticate with Expo
+        uses: expo/expo-github-action@v7
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}    # Expo token stored in GitHub Secrets :contentReference[oaicite:0]{index=0}
+
+      - name: Run EAS build (preview profile)
+        run: eas build --platform all --profile preview --non-interactive :contentReference[oaicite:1]{index=1}
