@@ -19,7 +19,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18.x'
-          cache: 'npm'
+          # cache: 'npm'       # you will likely want to turn this on, but this repo does not commit package-lock.json, aut al.
 
       - name: Install dependencies
         run: npm install
@@ -46,7 +46,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18.x'
-          cache: 'npm'
+          # cache: 'npm'       # you will likely want to turn this on, but this repo does not commit package-lock.json, aut al.
 
       - name: Install dependencies
         run: npm install
