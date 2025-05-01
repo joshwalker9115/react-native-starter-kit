@@ -40,7 +40,6 @@ export default defineConfig([
         version,
       }
     },
-    
   },
   {
     // disable formatting rules from ESLint so Prettier has full control
