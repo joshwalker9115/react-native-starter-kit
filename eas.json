@@ -1,6 +1,7 @@
 {
   "cli": {
-    "version": ">= 2.0.0"
+    "version": ">= 3.0.0",
+    "appVersionSource": "auto"
   },
   "build": {
     "development": {
@@ -8,8 +9,10 @@
       "distribution": "internal"
     },
     "preview": {
+      "developmentClient": false,
       "extends": "production",
-      "distribution": "internal"
+      "distribution": "internal",
+      "channel": "preview"
     },
     "production": {
       "android": {
