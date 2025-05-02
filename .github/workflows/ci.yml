@@ -60,4 +60,4 @@ jobs:
           token: ${{ secrets.EXPO_TOKEN }}    # Expo token stored in GitHub Secrets :contentReference[oaicite:0]{index=0}
 
       - name: Run EAS build (preview profile)
-        run: eas build --platform all --profile preview --non-interactive :contentReference[oaicite:1]{index=1}
+        run: eas build --platform all --profile preview --non-interactive
