@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "react-starter-kit",
-    "slug": "react-starter-kit",
+    "name": "React Native Starter Kit",
+    "slug": "react-native-starter-kit",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -23,6 +23,7 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "owner": "jwalker083"
   }
 }
